@@ -1,0 +1,18 @@
+General Help
+	This game is much like Rock, Paper, Scissors, but with a twist – the items are pudding of different colours!
+	You're on the left and the opponent is on the right.
+	Red > Green > Blue > Red > Green > Blue...
+
+Key bindings
+	Game
+		R:	pick the red pudding
+		G:	pick the green pudding
+		B:	pick the blue pudding
+	Help
+		F1:	open the help prompt
+		ESC:	close the help prompt
+	Other
+		Q:	quit the game
+		V:	toggle vsync
+		S:	toggle shading
+		P:	toggle particles
