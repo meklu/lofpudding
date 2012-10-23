@@ -168,7 +168,6 @@ function love.load()
 				gui.help.w.OnClose = function(object)
 					gui.help.active = false;
 					gui.help.w = nil;
-					gui.help.w:Remove();
 				end;
 				gui.help.active = true;
 				local list = loveframes.Create("list", gui.help.w);
