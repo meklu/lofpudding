@@ -1,10 +1,10 @@
 -- this handles the input
 
-function love.keypressed(key, unicode)
+function love.keypressed(key, isrepeat)
 	if key == 'r' then
 		game.hero.setColor(0);
 		game.update();
-	elseif key == 'g' then	
+	elseif key == 'g' then
 		game.hero.setColor(1);
 		game.update();
 	elseif key == 'b' then
@@ -21,7 +21,7 @@ function love.keypressed(key, unicode)
 	elseif key == 'q' then
 		love.event.quit();
 	elseif key == 's' then
-		if shader.active then shader.active = false; else shader.active = true; end
+		if shader_active then shader_active = false; else shader_active = true; end
 	elseif key == 'v' then
 		local mode = render.mode;
 		if mode.vsync then
@@ -31,7 +31,7 @@ function love.keypressed(key, unicode)
 			mode.vsync = true;
 			render.mode.vsync = true;
 		end
-		if not love.graphics.setMode( mode.width, mode.height, mode.fullscreen, mode.vsync, mode.fsaa ) then
+		if not love.window.setMode( mode.width, mode.height, mode.fullscreen, mode.vsync, mode.fsaa ) then
 			print("Modeset failed :c");
 		end
 	elseif key == 'p' then
@@ -44,12 +44,12 @@ function love.keypressed(key, unicode)
 			particle.active = true;
 		end
 	else
-		print("No key bound to '" .. key .. "' (" .. unicode .. ")");
+		print("No key bound to '" .. key .. "'");
 	end
-	loveframes.keypressed(key, unicode);
+	loveframes.keypressed(key, isrepeat);
 end
 
-function love.keyreleased(key, unicode)
+function love.keyreleased(key, isrepeat)
 	loveframes.keyreleased(key);
 end
 

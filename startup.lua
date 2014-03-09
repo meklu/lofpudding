@@ -5,7 +5,7 @@ function love.load()
 	world = love.graphics.newCanvas();
 	love.graphics.setBlendMode("alpha");
 	render = {};
-	local width, height, fullscreen, vsync, fsaa = love.graphics.getMode()
+	local width, height, fullscreen, vsync, fsaa = love.window.getMode()
 	render.mode = {};
 	render.mode.width = width;
 	render.mode.height = height;
@@ -35,11 +35,11 @@ function love.load()
 	particle.p:setPosition(0, 0);
 	particle.p:setDirection(1);
 	particle.p:setEmissionRate(200);
-	particle.p:setLifetime(0.2);
-	particle.p:setParticleLife(0.3, 0.5);
+	particle.p:setEmitterLifetime(0.2);
+	particle.p:setParticleLifetime(0.3, 0.5);
 	particle.p:setSpeed(80, 130);
 	particle.p:setSpread(6);
-	particle.p:setGravity(0);
+	particle.p:setRadialAcceleration(0);
 	particle.p:setRotation(0);
 	particle.p:setSpin(1);
 	particle.p:setSpinVariation(0);
@@ -159,6 +159,8 @@ function love.load()
 		},
 		helpOpen = function()
 			if not gui.help.active then
+				local w = love.window.getWidth();
+				local h = love.window.getHeight();
 				gui.help.w = loveframes.Create("frame");
 				local ww = w/2.7;
 				local wh = h/2;
@@ -210,31 +212,23 @@ function love.load()
 			r = pud.w;
 		},
 	};
-	gui.btn.r:SetSize(w/5, h/30);
-	gui.btn.r:SetPos(w/5 * 0.9, h - 4 * h/30);
 	gui.btn.r:SetText("Red");
 	gui.btn.r.OnClick = function(object)
 		game.hero.setColor(0);
 		game.update();
 	end;
-	gui.btn.g:SetSize(w/5, h/30);
-	gui.btn.g:SetPos(w/5 * 2, h - 4 * h/30);
 	gui.btn.g:SetText("Green");
 	gui.btn.g.OnClick = function(object)
 		game.hero.setColor(1);
 		game.update();
 	end;
-	gui.btn.b:SetSize(w/5, h/30);
-	gui.btn.b:SetPos(w/5 * 3.1, h - 4 * h/30);
 	gui.btn.b:SetText("Blue");
 	gui.btn.b.OnClick = function(object)
 		game.hero.setColor(2);
 		game.update();
 	end;
 	gui.txt.l:SetFont(font.huge);
-	gui.txt.l:SetPos(w/3, h / 2 - pud.height / 1.5);
 	gui.txt.r:SetFont(font.huge);
-	gui.txt.r:SetPos(w/3 * 2, h / 2 - pud.height / 1.5);
 	game.update();
 	game.reset();
 	game.drawScores();
@@ -244,8 +238,7 @@ function love.load()
 	print("Setting the mouse to be invisible.");
 	love.mouse.setVisible(false);
 	print("Doing some fragment shader stuff I guess.");
-	shader = {};
-	shader.active = true;
+	shader_active = true;
 	-- test thingamagic
-	shader.s = love.graphics.newPixelEffect( love.filesystem.read("glsl/test.frag") );
+	shader:new("test", "glsl/test.frag");
 end

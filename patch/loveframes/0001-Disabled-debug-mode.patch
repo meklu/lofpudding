@@ -1,6 +1,6 @@
-From 9f93d0801470c58e98a2b554efabeb3042bca215 Mon Sep 17 00:00:00 2001
+From 5a59e529d58ed3750d73c9378b191ebe4ac9acaf Mon Sep 17 00:00:00 2001
 From: Melker Narikka <meklu@meklu.org>
-Date: Tue, 23 Oct 2012 23:03:37 +0300
+Date: Sun, 9 Mar 2014 16:59:48 +0200
 Subject: [PATCH] Disabled debug mode.
 
 ---
@@ -8,18 +8,16 @@ Subject: [PATCH] Disabled debug mode.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/init.lua b/init.lua
-index f0d1ff6..c393cdd 100644
+index d2ff55e..ef987cd 100644
 --- a/init.lua
 +++ b/init.lua
-@@ -18,7 +18,7 @@ loveframes.config["DIRECTORY"]       = "libraries/loveframes"
- loveframes.config["DEFAULTSKIN"]     = "Blue"
- loveframes.config["ACTIVESKIN"]      = "Blue"
- loveframes.config["INDEXSKINIMAGES"] = true
--loveframes.config["DEBUG"]           = true
-+loveframes.config["DEBUG"]           = false
+@@ -15,7 +15,7 @@ loveframes.stage = "Alpha"
  
- -- misc library vars
- loveframes.drawcount                 = 0
--- 
-1.7.12
-
+ -- library configurations
+ loveframes.config = {}
+-loveframes.config["DIRECTORY"] = nil
++loveframes.config["DIRECTORY"] = "libraries/loveframes"
+ loveframes.config["DEFAULTSKIN"] = "Blue"
+ loveframes.config["ACTIVESKIN"] = "Blue"
+ loveframes.config["INDEXSKINIMAGES"] = true
+1.9.0

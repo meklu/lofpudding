@@ -2,7 +2,7 @@
 local t = 0;
 function love.update(dt)
 	t = t + dt;
-	shader.s:send("t", t);
+	shader:get("test"):send("t", t);
 	mouseX, mouseY = love.mouse.getPosition();
 	if game.result == 0 then
 		particle.p:setPosition(w/3 + gui.txt.l:GetWidth() / 2, h / 2 - pud.height / 1.5 + gui.txt.l:GetHeight() / 2);

@@ -32,13 +32,13 @@ function love.draw()
 		love.graphics.line(mouseX, mouseY + 24, mouseX + 12, mouseY + 16);
 	love.graphics.setCanvas();
 	love.graphics.setColor(255, 255, 255, 255);
-	if shader.active then
-		love.graphics.setPixelEffect( shader.s );
+	if shader_active then
+		love.graphics.setShader( shader:get("test") );
 		love.graphics.draw(world, 0, 0);
 	else
-		love.graphics.setPixelEffect();
+		love.graphics.setShader();
 		love.graphics.draw(world, 0, 0);
 	end
-	love.graphics.setPixelEffect();
+	love.graphics.setShader();
 	love.graphics.draw(ui, 0, 0);
 end
